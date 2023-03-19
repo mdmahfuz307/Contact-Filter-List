@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    type="text/css">
+
+  <title>My_Contacts</title>
+
+  <style>
+    .collection-item:hover{
+      background-color: rgb(216, 216, 245);
+      color: white;
+      cursor: pointer;
+    }
+
+    a{
+      color: black;
+
+    }
+
+    a:hover{
+      color: white;
+
+    }
+    
+  
+  .hide {
+    display: none !important;
+    padding: 0 !important;
+  }
+  button{
+    margin-left: 1%;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    background-color: lightcoral;
+    color: white;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <button><a href="https://www.linkedin.com/in/mdmahfuz307/">Made by Nirob 🔥</a></button>
+  <div class="container">
+    <h1 class="center-align">My Contacts</h1>
+    <input type="text" id="filter-input" placeholder="Search by names , initials , surnames ...">
+    <br>
+    <br>
+    <ul class="collection with-header" id="names">
+      <li class="collection-item"><a target="_blank" href="https://www.linkedin.com/in/golamahmedmugdha/">Mugdha</a></li>
+      <li class="collection-item"><a target="_blank" href="https://www.linkedin.com/in/syed-rahat/">Rahat</a></li>
+      
+    </ul>
+  </div>
+
+  <script>
+
+
+    // GET INPUT ELEMENT
+
+    let filterInput = document.getElementById('filter-input');
+
+    // ADD EVENT LISTENER
+
+    filterInput.addEventListener('keyup', filterNames);
+
+    function filterNames() {
+      // GET VALUE OF INPUT
+      let filterValue = document.getElementById('filter-input').value.toUpperCase();
+
+      // GET #names UL
+      let ul = document.getElementById('names');
+
+      // GET LI ITEMS FROM UL
+      let li = ul.querySelectorAll('.collection-item');
+
+      // LOOP THROUGH .collection-item LIS
+      for(let i = 0; i < li.length; i++) {
+        let a = li[i].getElementsByTagName('a')[0];
+        // IF MATCHED
+        if (a.innerText.toUpperCase().indexOf(filterValue) > -1) {
+          li[i].style.display = '';
+        } else {
+          li[i].style.display = 'none';
+        }
+      }
+    }
+    // make sure search box input field is focused by default when page loads
+    filterInput.focus();
+
+
+
+    
+    
+    // function filterName() {
+        //   const value = this.value.toUpperCase();
+        //   names.forEach(name => name.textContent.toUpperCase().includes(value) ? name.classList.remove('hide') : name.classList.add('hide'));
+        // }
+        
+        // filterInput.addEventListener('change', filterName);
+        // filterInput.addEventListener('keyup', filterName);
+        
+
+        //! ***** AMENDED (MORE MODERN?) CODE SUPPLIED BY YOUTUBE COMMENTER MrFckingninja AND RETRIEVED FROM HIS GITHUB REPO: https://github.com/damian-balas/filterable-list/blob/master/main.js
+
+        // 1. better to use const to declare variables (instead of let) if we're not going to be changing the value of said variables
+        // 2. .forEach() is usually a preferable alternative to using a for loop
+        // 3. indexOf() has generally been replaced nowadays by either .includes() (which is used here) or .filter()
+    
+        // const filterInput = document.querySelector('#filter-input');
+        // const names = [...document.querySelectorAll('.collection-item')];
+        // *****
+    
+    
+    
+  </script>
+
+</body>
+
+</html>
